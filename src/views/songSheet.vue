@@ -20,7 +20,11 @@
             </transition>
           </div>
         </el-tab-pane>
+<<<<<<< HEAD
         <el-tab-pane :label="tag" :name="tag" v-for="(tag, index) in songSheetListArr" :key="index">
+=======
+        <el-tab-pane :label="item.name" :name="item.name" v-for="item in songSheetListArr" :key="item.id">
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
           <div class="push">
             <transition name="fade" mode="out-in">
               <div class="push-items" v-if="changeTab" :key="activeName">

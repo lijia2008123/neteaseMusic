@@ -6,6 +6,7 @@
   "description": "",
   "glyphs": [
     {
+<<<<<<< HEAD
       "icon_id": "257623",
       "name": "剧",
       "font_class": "ju",
@@ -69,6 +70,8 @@
       "unicode_decimal": 59326
     },
     {
+=======
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
       "icon_id": "5666269",
       "name": "VIP",
       "font_class": "VIP",

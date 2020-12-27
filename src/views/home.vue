@@ -5,7 +5,11 @@
       <transition name="change" mode="out-in">
         <div v-show="tabIndex === 0" class="block-wrapper">
           <div class="bg"></div>
+<<<<<<< HEAD
           <el-carousel trigger="click" :autoplay="false">
+=======
+          <el-carousel trigger="click" height="18vh" :autoplay="false">
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
             <el-carousel-item v-for="item in banners" :key="item.bannerId">
               <div class="banner" @click="bannerClick(item)">
                 <img :src="item.pic" class="banner-img" />
@@ -264,7 +268,11 @@ export default {
         position: relative;
         .bg{
           background: #D43A31;
+<<<<<<< HEAD
           // background: #262626;
+=======
+          background: #262626;
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
           height: 13vh;
           width: 100%;
           position: absolute;
@@ -287,7 +295,10 @@ export default {
         }
       }
       .radius{
+<<<<<<< HEAD
         padding-top: 10px;
+=======
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -304,7 +315,11 @@ export default {
           flex-direction: column;
           .radius-img{
             background: #D43A31;
+<<<<<<< HEAD
             // background: #262626;
+=======
+            background: #262626;
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
             color: #fff;
             border-radius: 100%;
             height: 5vh;
@@ -453,8 +468,13 @@ export default {
 <style lang="less">
   .container{
     /*deep*/.el-carousel{
+<<<<<<< HEAD
       padding: 16px 16px 6px 16px;
       height: 20vh;
+=======
+      padding: 16px 16px 0px 16px;
+      height: 18vh;
+>>>>>>> f76209857145323212f01352520c602c2ac96a15
     }
     .el-carousel__indicators{
       bottom: 6px;
