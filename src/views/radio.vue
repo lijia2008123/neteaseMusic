@@ -31,7 +31,6 @@
     data() {
       return {
         title: '电台',
-<<<<<<< HEAD
         bannerList: [],
         ballList: [
           { name: '电台分类', icon: 'icon-041siyecao' },
@@ -39,9 +38,6 @@
           { name: '付费精品', icon: 'icon-huangguan' },
           { name: '声之剧场', icon: 'icon-ju' }
         ]
-=======
-        bannerList: []
->>>>>>> f76209857145323212f01352520c602c2ac96a15
       }
     },
     components: {
@@ -54,7 +50,6 @@
       this.getBannerDetail()
     },
     methods: {
-<<<<<<< HEAD
       clickBall(name) {
         if(name === '电台分类') {
           this.$router.push('/radio-item')
@@ -63,8 +58,6 @@
       bannerClick() {
 
       },
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
       getBannerDetail() {
         getBanner().then(res => {
           this.bannerList = res.data
@@ -80,11 +73,7 @@
       position: relative;
       .bg{
         background: #D43A31;
-<<<<<<< HEAD
         // background: #262626;
-=======
-        background: #262626;
->>>>>>> f76209857145323212f01352520c602c2ac96a15
         height: 13vh;
         width: 100%;
         position: absolute;
@@ -107,7 +96,6 @@
         }
       }
     }
-<<<<<<< HEAD
     .radius{
       display: flex;
       justify-content: space-between;
@@ -158,8 +146,6 @@
         }
       }
     }
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
   }
   /*deep*/.el-carousel__container{
     height: 30vh !important;
@@ -169,11 +155,7 @@
   .radio-main{
     /*deep*/.el-carousel{
       padding: 16px 16px 0px 16px;
-<<<<<<< HEAD
       height: 22vh;
-=======
-      height: 18vh;
->>>>>>> f76209857145323212f01352520c602c2ac96a15
     }
     .el-carousel__indicators{
       bottom: 6px;

@@ -110,15 +110,11 @@ export default {
 </script>
 <style lang="less" scoped>
   .home{
-<<<<<<< HEAD
     background: #de2e21;
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
     display: flex;
     flex-direction: column;
     height: 100vh;
     justify-content: space-around;
-<<<<<<< HEAD
     .logo{
       display: flex;
       justify-content: center;
@@ -150,8 +146,6 @@ export default {
         font-style: normal;
       }
     }
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
     .login{
       display: flex;
       flex-direction: column;
@@ -196,7 +190,6 @@ export default {
     top: 0 !important;
     width: 70%;
   }
-<<<<<<< HEAD
   .home{
     .el-tabs__item{
       color: #fdf6fe;
@@ -211,6 +204,4 @@ export default {
       background-color: #ea3024;
     }
   }
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
 </style>

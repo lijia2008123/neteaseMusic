@@ -5,11 +5,7 @@
       <transition name="change" mode="out-in">
         <div v-show="tabIndex === 0" class="block-wrapper">
           <div class="bg"></div>
-<<<<<<< HEAD
           <el-carousel trigger="click" :autoplay="false">
-=======
-          <el-carousel trigger="click" height="18vh" :autoplay="false">
->>>>>>> f76209857145323212f01352520c602c2ac96a15
             <el-carousel-item v-for="item in banners" :key="item.bannerId">
               <div class="banner" @click="bannerClick(item)">
                 <img :src="item.pic" class="banner-img" />
@@ -28,8 +24,8 @@
           </div>
           <div class="push">
             <div class="push-title">
-              <span>懂你的精选歌单</span>
-              <span @click="moreSongSheet">查看更多</span>
+              <span>推荐歌单</span>
+              <span @click="moreSongSheet">更多<i class="el-icon-arrow-right"></i></span>
             </div>
             <div class="push-items">
               <div class="push-item" v-for="item in personalizedArr" :key="item.id">
@@ -45,8 +41,8 @@
           </div>
           <div class="push">
             <div class="push-title">
-              <span>值得聆听的音乐</span>
-              <span @click="playAll"><i class="iconfont icon-bofang1"></i>播放全部</span>
+              <span>私人定制</span>
+              <span @click="playAll"><i class="iconfont icon-bofang1"></i>播放</span>
             </div>
             <div class="song-items">
               <div class="song-item" v-for="item in newSongArr" :key="item.id">
@@ -267,12 +263,8 @@ export default {
         // padding: 18px;
         position: relative;
         .bg{
-          background: #D43A31;
-<<<<<<< HEAD
+          background: linear-gradient(#f4f4f4, #fff);
           // background: #262626;
-=======
-          background: #262626;
->>>>>>> f76209857145323212f01352520c602c2ac96a15
           height: 13vh;
           width: 100%;
           position: absolute;
@@ -295,35 +287,32 @@ export default {
         }
       }
       .radius{
-<<<<<<< HEAD
+        margin-right: 5vw;
+        overflow-x: scroll;
         padding-top: 10px;
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         .radius-item:first-child{
-          margin-left: 18px;
+          margin-left: 5vw;
         }
         .radius-item:last-child{
-          margin-right: 18px;
+          margin-right: 30px;
+          padding-right: 30px;
         }
         .radius-item{
+          margin-left: 3vh;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-direction: column;
           .radius-img{
-            background: #D43A31;
-<<<<<<< HEAD
+            background: #d74d43;
             // background: #262626;
-=======
-            background: #262626;
->>>>>>> f76209857145323212f01352520c602c2ac96a15
             color: #fff;
             border-radius: 100%;
-            height: 5vh;
-            width: 5vh;
+            height: 4vh;
+            width: 4vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -336,12 +325,13 @@ export default {
               color: #D43A31;
               font-weight: 600;
               font-size: 14px;
-              top: 14px;
+              top: 10px;
             }
           }
           .radius-title{
+            width: 50px;
             margin-top: 5px;
-            font-size: 14px;
+            font-size: 12px;
           }
         }
       }
@@ -359,7 +349,7 @@ export default {
           span:last-child{
             font-size: 14px;
             border: 1px solid #ddd;
-            padding: 3px 5px;
+            padding: 3px 10px;
             border-radius: 30px;
             margin-right: 18px;
           }
@@ -393,6 +383,7 @@ export default {
               }
             }
             .push-name{
+              font-size: 12px;
               text-align: left;
               margin-top: 5px;
             }
@@ -468,16 +459,11 @@ export default {
 <style lang="less">
   .container{
     /*deep*/.el-carousel{
-<<<<<<< HEAD
       padding: 16px 16px 6px 16px;
-      height: 20vh;
-=======
-      padding: 16px 16px 0px 16px;
       height: 18vh;
->>>>>>> f76209857145323212f01352520c602c2ac96a15
     }
     .el-carousel__indicators{
-      bottom: 6px;
+      bottom: 18px;
     }
     .el-carousel__container{
       height: 100%;
@@ -486,10 +472,10 @@ export default {
       width: 100%;
     }
     /*deep*/.el-carousel__button{
-      width: 6px;
-      height: 6px;
+      width: 9px;
+      height: 2px;
       border-radius: 100%;
-      background: #DC2C1F;
+      background: #fff;
       opacity: .3;
     }
   }

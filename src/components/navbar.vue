@@ -1,9 +1,15 @@
 <template>
   <div class="main">
     <nav>
-      <div class="user-icon">
-        <i class="el-icon-user icon-left" @click="userDetailOpen();isShow = false"></i>
+      <div class="user-icon" @click="userDetailOpen();isShow = false">
+        <i class="iconfont icon-chakantiezigengduo"></i>
+        <span class="msg-num">{{ items[0].num }}</span>
       </div>
+      <router-link to="/search" class="search-block">
+        <div class="search">
+          <i class="el-icon-search"></i>
+        </div>
+      </router-link>
       <!-- <div class="my-tabs">
         <el-tabs v-model="activeName">
           <el-tab-pane label="我的" name="first">
@@ -17,11 +23,11 @@
           </el-tab-pane>
         </el-tabs>
       </div> -->
-      <div class="tabs">
+      <!-- <div class="tabs">
         <span class="tab"  v-for="(tab, index) in tabs" :key="index" :class="{ 'tabs-active': index === currentIndex }" @click="setTabIndex(index)">{{ tab.name }}</span>
-      </div>
-      <router-link to="/search">
-        <i class="el-icon-search"></i>
+      </div> -->
+      <router-link to="" class="listen">
+        <i class="iconfont icon-record-sound-full"></i>
       </router-link>
     </nav>
     <div>
@@ -169,28 +175,62 @@
 <style lang="less" scoped>
   .main{
     color: #fff;
-    background: #DC2C1F;
+    background: #f4f4f4;
+    // background: #DC2C1F;
     // background: #ddd;
+    color: #2c3e50;
     height: 6vh;
     nav{
       height: 100%;
       position: relative;
       display: flex;
-      justify-content: space-between;
       align-items: center;
       .user-icon{
-        position: absolute;
-        left: 24px;
-        top: 15px;
-        z-index: 999;
-        font-size: 20px;
-        .icon-left{
+        width: 16%;
+        height: 100%;
+        .icon-chakantiezigengduo{
+          font-size: 28px;
+          transform: rotateX(180deg);
           position: absolute;
-          top: 0;
-          left: 0;
+          top: 8px;
+          left: 12px;
         }
-        .el-icon-plus{
-          transform: rotate(45deg);
+        .msg-num{
+          position: absolute;
+          left: 28px;
+          top: 10px;
+          font-size: 12px;
+          background: #dc2c1f;
+          color: #fff;
+          padding: 2px 5px;
+          border-radius: 10px;
+        }
+      }
+      .search-block{
+        width: 68%;
+        height: 58%;
+        position: relative;
+        top: 2%;
+        .search{
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          // box-shadow: 0 0 1px 2px #E6E6FA;
+          background: #fff;
+          .el-icon-search{
+            position: absolute;
+            left: 12px;
+            top: 6px;
+          }
+        }
+      }
+      .listen{
+        i{
+          font-size: 20px;
+          color: #313131;
+          position: absolute;
+          top: 14px;
+          right: 17px;
         }
       }
       .tabs{
@@ -218,14 +258,6 @@
           display: flex;
           justify-content: center;
         }
-      }
-      a{
-        position: absolute;
-        right: 24px;
-        top: 14px;
-        z-index: 999;
-        font-size: 20px;
-        color: #fff;
       }
     }
     /deep/.el-drawer__header{

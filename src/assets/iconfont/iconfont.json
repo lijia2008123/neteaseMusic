@@ -6,7 +6,20 @@
   "description": "",
   "glyphs": [
     {
-<<<<<<< HEAD
+      "icon_id": "18170144",
+      "name": "麦克风,声音,录音,录制声音",
+      "font_class": "record-sound-full",
+      "unicode": "e971",
+      "unicode_decimal": 59761
+    },
+    {
+      "icon_id": "913743",
+      "name": "更多",
+      "font_class": "chakantiezigengduo",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
       "icon_id": "257623",
       "name": "剧",
       "font_class": "ju",
@@ -70,8 +83,6 @@
       "unicode_decimal": 59326
     },
     {
-=======
->>>>>>> f76209857145323212f01352520c602c2ac96a15
       "icon_id": "5666269",
       "name": "VIP",
       "font_class": "VIP",
