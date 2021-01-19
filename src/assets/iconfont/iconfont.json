@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "12753707",
+      "name": "播放",
+      "font_class": "bofang_huaban",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
       "icon_id": "18170144",
       "name": "麦克风,声音,录音,录制声音",
       "font_class": "record-sound-full",

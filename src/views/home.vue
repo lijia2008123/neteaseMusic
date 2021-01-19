@@ -32,14 +32,14 @@
                 <div class="push-img">
                   <img :src="item.picUrl">
                   <span>
-                  <i class="iconfont icon-bofang"></i> 
-                  {{ item.playCount | formatNum }}</span>
+                    <i class="iconfont icon-bofang_huaban"></i> 
+                    {{ item.playCount | formatNum }}</span>
                 </div>
-                <span class="push-name">{{ item.name | formatName }}</span>
+                <span class="push-name">{{ item.name }}</span>
               </div>
             </div>
           </div>
-          <div class="push">
+          <div class="push personal-push">
             <div class="push-title">
               <span>私人定制</span>
               <span @click="playAll"><i class="iconfont icon-bofang1"></i>播放</span>
@@ -108,17 +108,19 @@ export default {
   filters: {
     formatNum(val) {
       let len = String(val).length
-      if(len > 4) {
+      if(len > 4 && len <= 8) {
         return parseInt(val / 10000) + '万'
+      } else if(len > 8) {
+        return parseInt(val / 100000000) + '亿'
       }
       return val
     },
-    formatName(val) {
-      if(val.length > 10) {
-        return `${val.slice(0, 10)}...`
-      }
-      return val
-    },
+    // formatName(val) {
+    //   if(val.length > 9) {
+    //     return `${val.slice(0, 9)}...`
+    //   }
+    //   return val
+    // },
     formatSongName(val) {
       if(val.length > 18) {
         return `${val.slice(0, 18)}...`
@@ -278,7 +280,7 @@ export default {
           .banner-title{
             position: absolute;
             right: 0;
-            bottom: 5px;
+            bottom: 4px;
             border-radius: 10px 0;
             padding: 3px 5px;
             color: #fff;
@@ -337,17 +339,19 @@ export default {
       }
       .push{
         margin-top: 22px;
+        border-top: 1px solid #f5f5f5;
         .push-title{
           display: flex;
           align-items: center;
           justify-content: space-between;
+          margin-top: 22px;
           span:first-child{
             font-size: 16px;
             font-weight: 600;
             margin-left: 18px;
           }
           span:last-child{
-            font-size: 14px;
+            font-size: 13px;
             border: 1px solid #ddd;
             padding: 3px 10px;
             border-radius: 30px;
@@ -356,36 +360,47 @@ export default {
         }
         .push-items{
           display: flex;
-          overflow: scroll;
+          flex-wrap: wrap;
+          padding-left: 18px;
+          padding-right: 18px;
           .push-item{
-            padding: 18px 0 18px 18px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            width: 33.3%;
+            padding-top: 16px;
             .push-img{
               text-align: left;
-              width: 12vh;
-              height: 12vh;
+              width: 13vh;
+              height: 13vh;
               img{
                 width: 100%;
                 border-radius: 8px;
-              }
-              .icon-bofang{
-                font-size: 12px;
               }
               span{
                 position: absolute;
                 color: #fff;
                 top: 21px;
                 right: 7px;
+                padding: 2px 3px;
                 font-size: 12px;
+                background: rgba(0,0,0,.2);
+                border-radius: 24px;
+                .icon-bofang_huaban{
+                  font-size: 12px;
+                }
               }
             }
             .push-name{
               font-size: 12px;
               text-align: left;
               margin-top: 5px;
+              word-break: break-word;
+              white-space: nowrap;
+              width: 95%;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
           }
         }
@@ -427,6 +442,9 @@ export default {
             }
           }
         }
+      }
+      .personal-push{
+        border-top: 10px solid #f5f5f5;
       }
     }
     /*deep*/.el-carousel__container{
@@ -474,7 +492,7 @@ export default {
     /*deep*/.el-carousel__button{
       width: 9px;
       height: 2px;
-      border-radius: 100%;
+      border-radius: 8px 8px;
       background: #fff;
       opacity: .3;
     }

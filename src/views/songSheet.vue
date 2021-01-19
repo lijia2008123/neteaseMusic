@@ -11,7 +11,7 @@
                   <div class="push-img">
                     <img :src="item.picUrl">
                     <span>
-                    <i class="iconfont icon-bofang"></i> 
+                    <i class="iconfont icon-bofang_huaban"></i> 
                     {{ item.playCount | formatNum }}</span>
                   </div>
                   <span class="push-name">{{ item.name | formatName }}</span>
@@ -20,11 +20,7 @@
             </transition>
           </div>
         </el-tab-pane>
-<<<<<<< HEAD
         <el-tab-pane :label="tag" :name="tag" v-for="(tag, index) in songSheetListArr" :key="index">
-=======
-        <el-tab-pane :label="item.name" :name="item.name" v-for="item in songSheetListArr" :key="item.id">
->>>>>>> f76209857145323212f01352520c602c2ac96a15
           <div class="push">
             <transition name="fade" mode="out-in">
               <div class="push-items" v-if="changeTab" :key="activeName">
@@ -35,7 +31,7 @@
                     <i class="iconfont icon-bofang"></i> 
                     {{ item.playCount | formatNum }}</span>
                   </div>
-                  <span class="push-name">{{ item.name | formatName }}</span>
+                  <span class="push-name">{{ item.name }}</span>
                 </div>
               </div>
             </transition>
@@ -71,8 +67,10 @@ export default {
   filters: {
     formatNum(val) {
       let len = String(val).length
-      if(len > 4) {
+      if(len > 4 && len <= 8) {
         return parseInt(val / 10000) + '万'
+      } else if(len > 8) {
+        return parseInt(val / 100000000) + '亿'
       }
       return val
     },
@@ -144,39 +142,48 @@ export default {
       }
     }
     .push-items{
-      justify-content: space-around;
-      padding: 10px 10px 8vh 10px;
       display: flex;
       flex-wrap: wrap;
+      padding-left: 18px;
+      padding-right: 18px;
       .push-item{
-        padding-bottom: 28px;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
+        width: 33.3%;
+        padding-top: 16px;
         .push-img{
           text-align: left;
-          width: 12vh;
-          height: 12vh;
+          width: 13vh;
+          height: 13vh;
           img{
             width: 100%;
             border-radius: 8px;
           }
-          .icon-bofang{
-            font-size: 12px;
-          }
           span{
             position: absolute;
             color: #fff;
-            top: 4px;
-            right: 5px;
+            top: 21px;
+            right: 7px;
+            padding: 2px 3px;
             font-size: 12px;
+            background: rgba(0,0,0,.2);
+            border-radius: 24px;
+            .icon-bofang_huaban{
+              font-size: 12px;
+            }
           }
         }
         .push-name{
-          width: 12vh;
+          font-size: 12px;
           text-align: left;
           margin-top: 5px;
+          word-break: break-word;
+          white-space: nowrap;
+          width: 95%;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }

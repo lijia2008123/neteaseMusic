@@ -5,7 +5,7 @@
     </div>
     </transition>
     <div class="content">
-      <pageHeader :title="songName" :singerName="singerName" :showShare="true"></pageHeader>
+      <pageHeader :title="songName" :singerName="singerName" :showShare="true" @singerDetail="singerDetailOpen"></pageHeader>
         <div class="play-place">
           <img class="neddle" :src="needle" :class="playStatus ? 'neddle-on' : 'neddle-off'">
           <transition name="cd" mode="in-out" :duration="{ enter: 500, leave: 0 }">
@@ -51,7 +51,21 @@
       </div>
     </div>
     <el-drawer :visible.sync="drawer" direction="btt" custom-class="floor-drawer" :show-close="false" @closed="handleClose">
-      <span>{{playSongItem.name}}</span>
+      <span>{{ playSongItem.name }}</span>
+    </el-drawer>
+    <el-drawer :visible.sync="singerDetailDrawer" direction="btt" custom-class="singer-drawer" :show-close="false" @closed="handleClose">
+      <p class="singer-title">该歌曲有多个歌手</p>
+      <div class="singer">
+        <div class="singer-item" v-for="item in singerArr" :key="item.id">
+          <div class="singer-item-left">
+            <img :src="item.imgUrl">
+            <span>{{ item.name }}</span>
+          </div>
+          <div class="singer-item-right">
+            <span>+ 关注</span>
+          </div>
+        </div>
+      </div>
     </el-drawer>
   </div>
 </template>
@@ -61,7 +75,7 @@
   import pageHeader from '@/components/header'
   import { getSongId, getAlId, setAllMsg, getAllMsg } from '@/utils/auth'
   import { getSong, getAlbum } from '@/api/search'
-  import { like, likelist } from '@/api/play'
+  import { like, likelist, singerDetail, singerDescribe, singerSimilar } from '@/api/play'
   import { mapGetters } from 'vuex'
   export default {
     components: {
@@ -71,6 +85,7 @@
       return {
         lyricShow: true,
         drawer: false,
+        singerDetailDrawer: false,
         isLike: false,
         needle,
         cover,
@@ -79,7 +94,8 @@
         coverUrl: '',
         songId: '',
         songUrl: '',
-        isShow: true
+        isShow: true,
+        singerArr: []
       }
     },
     computed: {
@@ -90,6 +106,7 @@
         'fullTimeVal': 'fullTime',
         'currentTimeVal': 'currentTime',
         'songIdVal':  'songId',
+        'song': 'song',
         'alId':  'alId',
         'playSongItem': 'playSong',
         'modeVal': 'mode',
@@ -123,6 +140,23 @@
       }
     },
     methods: {
+      getSingerImg() { // 获取歌手图片
+        this.singerArr.forEach(e => {
+          this.$set(e, 'imgUrl', '')
+          singerDetail({ id: e.id }).then(res => {
+            e.imgUrl = res.data.artist.cover
+          })
+        })
+      },
+      singerDetailOpen() {
+        if(this.playSongItem.ar.length !== 1) {
+          this.singerDetailDrawer = true
+          this.singerArr = this.playSongItem.ar
+          this.getSingerImg()
+        } else if(this.playSongItem.ar.length === 1){
+
+        }
+      },
       moreMsg() {
         this.drawer = true
         console.log('playSongItem',this.playSongItem)
@@ -364,6 +398,39 @@
         }
       }
     }
+    .singer{
+      .singer-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        .singer-item-left{
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+          img{
+            width: 10vw;
+            height: 4.5vh;
+            border-radius: 100%;
+          }
+          span{
+            margin-left: 10px;
+            font-size: 14px;
+          }
+        }
+        .singer-item-right{
+          margin-right: 10px;
+          span{
+            display: inline-block;
+            border: 1px solid #b64b4d;
+            border-radius: 15px;
+            padding: 2px 5px;
+            font-size: 12px;
+            color: #b64b4d;
+          }
+        }
+      }
+    }
   }
   .cd-enter {
     // transform: translateX(100%);
@@ -433,6 +500,23 @@
       padding: 10px 15px !important;
       .el-drawer__header{
         display: none;
+      }
+    }
+    /*deep*/.singer-drawer{
+      border-radius: 28px 28px 0 0;
+      height: 20% !important;
+      padding: 10px 15px !important;
+      .el-drawer__header{
+        display: none;
+      }
+      .singer-title{
+        color: #adabac;
+        font-size: 14px;
+        text-align: left;
+        padding-left: 3%;
+        padding-bottom: 3%;
+        border-bottom: 1px solid #f3f3f3;
+
       }
     }
   }

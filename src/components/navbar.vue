@@ -221,6 +221,7 @@
             position: absolute;
             left: 12px;
             top: 6px;
+            color: #969696;
           }
         }
       }

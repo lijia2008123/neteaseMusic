@@ -2,23 +2,14 @@
 	<div class="ranking-main">
 		<pageHeader :title="title" :showShare="false" :showSingerName="false"></pageHeader>
 		<div class="container">
-<<<<<<< HEAD
 			<div class="wrapper" v-for="item in list" :key="item.id" v-if="item.tracks.length  !== 0">
-=======
-			<div class="wrapper" v-for="(item, index) in list" :key="item.id" v-if="item.tracks.length  !== 0">
->>>>>>> f76209857145323212f01352520c602c2ac96a15
 				<div class="img">
 					<img :src="item.coverImgUrl">
 					<span>{{ item.updateFrequency }}</span>
 				</div>
 				<div class="list">
-<<<<<<< HEAD
 					<span v-for="(song, i) in item.tracks" :key="i">
 						{{ `${ i + 1 }.${ formatName(song.first) }-${ formatName(song.second) }` }}
-=======
-					<span v-for="(song, i) in item.tracks">
-						{{ `${ i + 1 }.${ song.first }-${ song.second }` }}
->>>>>>> f76209857145323212f01352520c602c2ac96a15
 					</span>
 				</div>
 			</div>

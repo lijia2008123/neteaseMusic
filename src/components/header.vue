@@ -5,7 +5,7 @@
         <i class="el-icon-back" @click="goBack"></i>
         <div class="left-title">
           <div class="title">{{ title }}</div>
-          <div class="singer-name" v-if="showSingerName">{{ singerName }}<i class="el-icon-arrow-right"></i></div>
+          <div class="singer-name" v-if="showSingerName" @click="singerDetail">{{ singerName }}<i class="el-icon-arrow-right"></i></div>
         </div>
       </el-col>
       <el-col :span="12" class="right" v-if="showRight">
@@ -52,6 +52,9 @@
       }
     },
     methods: {
+      singerDetail() {
+        this.$emit('singerDetail')
+      },
       goBack() {
         this.$router.go(-1)
       },
@@ -77,8 +80,6 @@
       left: 0;
       width: 100%;
       height: 6vh;
-      // background: #ddd;
-      background: #D43A31;
       z-index: 999;
       display: flex;
       align-items: center;

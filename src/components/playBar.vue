@@ -188,20 +188,22 @@
         this.showListDrawer = true
       },
       async getSongDetail() {
-        const res = await getSong({ id: this.songIdVal })
-        if(res.data[0].url === null || res.data[0].url === '') {
-          this.$store.dispatch('canplaySet', false)
-          this.$store.dispatch('playStatus', true)
-          this.$message.error('暂无权限~')
-          return
-        } else {
-          await this.getAlbumMsg()
-          this.$store.dispatch('canplaySet', true)
-          this.$store.dispatch('songUrlSet', res.data[0].url)
-          this.getLyricMsg()
-          setTimeout(() => {
-            this.$store.dispatch('playStatus', false)
-          }, 500)
+        if(this.songIdVal !== 'null') {
+          const res = await getSong({ id: this.songIdVal })
+          if(res.data[0].url === null || res.data[0].url === '') {
+            this.$store.dispatch('canplaySet', false)
+            this.$store.dispatch('playStatus', true)
+            this.$message.error('暂无权限~')
+            return
+          } else {
+            await this.getAlbumMsg()
+            this.$store.dispatch('canplaySet', true)
+            this.$store.dispatch('songUrlSet', res.data[0].url)
+            this.getLyricMsg()
+            setTimeout(() => {
+              this.$store.dispatch('playStatus', false)
+            }, 500)
+          }
         }
       },
       async getAlbumMsg() {
@@ -375,7 +377,7 @@
       }
       .song-list-right{
         .el-icon-delete{
-
+          
         }
       }
     }
