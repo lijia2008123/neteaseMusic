@@ -85,6 +85,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "digitalAlbumAll" */ '@/views/digitalAlbumAll.vue')
   },
   {
+    path: '/singerDetail',
+    name: 'SingerDetail',
+    component: () => import(/* webpackChunkName: "singerDetail" */ '@/views/singerDetail.vue')
+  },
+  {
     path: '/404',
     component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
     hidden: true,

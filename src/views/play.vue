@@ -2,7 +2,7 @@
   <div class="main-item">
     <transition name="change" mode="out-in">
       <div class="bg bg-filter" :style="{ background: `url(${coverUrl})` }" v-show="isShow" :key="songIdVal">
-    </div>
+      </div>
     </transition>
     <div class="content">
       <pageHeader :title="songName" :singerName="singerName" :showShare="true" @singerDetail="singerDetailOpen"></pageHeader>
@@ -56,7 +56,7 @@
     <el-drawer :visible.sync="singerDetailDrawer" direction="btt" custom-class="singer-drawer" :show-close="false" @closed="handleClose">
       <p class="singer-title">该歌曲有多个歌手</p>
       <div class="singer">
-        <div class="singer-item" v-for="item in singerArr" :key="item.id">
+        <div class="singer-item" v-for="item in singerArr" :key="item.id" @click="singerClick(item.id)">
           <div class="singer-item-left">
             <img :src="item.imgUrl">
             <span>{{ item.name }}</span>
@@ -140,6 +140,9 @@
       }
     },
     methods: {
+      singerClick(id) {
+        this.$router.push({ name: 'SingerDetail', params: { id: id } })
+      },
       getSingerImg() { // 获取歌手图片
         this.singerArr.forEach(e => {
           this.$set(e, 'imgUrl', '')
@@ -148,13 +151,13 @@
           })
         })
       },
-      singerDetailOpen() {
+      singerDetailOpen() { 
         if(this.playSongItem.ar.length !== 1) {
-          this.singerDetailDrawer = true
           this.singerArr = this.playSongItem.ar
           this.getSingerImg()
+          this.singerDetailDrawer = true
         } else if(this.playSongItem.ar.length === 1){
-
+          this.singerClick(this.playSongItem.ar[0].id)
         }
       },
       moreMsg() {

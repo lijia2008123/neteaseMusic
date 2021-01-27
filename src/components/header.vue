@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <el-row class="row" :style="{ background: $route.path === '/play' ? '' : '#D43A31' }">
+    <el-row class="row" :style="{ background: $route.path === '/play' || $route.path === '/singerDetail' ? '' : '#D43A31' }">
       <el-col :span="showShare ? 12 : 24" class="left">
         <i class="el-icon-back" @click="goBack"></i>
         <div class="left-title">
