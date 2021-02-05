@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8493449",
+      "name": "我的商圈",
+      "font_class": "wodeshangquan",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
       "icon_id": "12753707",
       "name": "播放",
       "font_class": "bofang_huaban",
